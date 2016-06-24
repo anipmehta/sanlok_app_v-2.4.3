@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- suppress ALL -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.sanlok.app" >
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- GCM connects to Google Services. -->
+
+    <!-- GCM requires a Google account. -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM"/>
+
+    <permission android:name="com.sourcey.materialloginexample.permission.C2D_MESSAGE" android:protectionLevel="signature" />
+    <uses-permission android:name="com.sourcey.materialloginexample.permission.C2D_MESSAGE" />
+    <!-- This app has permission to register and receive dataf message. -->
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/mlogo"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme.Dark"
+        >
+        <activity
+            android:name=".StartActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/AppTheme.Dark" />
+        <activity
+            android:name=".Notes"
+            android:hardwareAccelerated="true"
+            android:theme="@style/AppTheme.Dark" />
+        <activity
+        android:name=".LoginActivity"
+        android:theme="@style/AppTheme.Dark" />
+        <activity
+            android:name=".MyActivity"
+            android:theme="@style/AppTheme.Dark" >
+
+    </activity>
+        <activity
+            android:name=".NewsActivity"
+            android:theme="@style/AppTheme.Dark" >
+            <intent-filter>
+                <action android:name="com.sanlok.app.MESSAGE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            </activity>
+        <activity
+            android:name=".SignupActivity"
+            android:theme="@style/AppTheme.Dark" />
+        <activity
+            android:name=".Home"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Dark" />
+<activity android:name=".FeePayment"
+    android:theme="@style/AppTheme.Dark"
+    android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".Webview"
+            android:theme="@style/AppTheme.Dark"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".Temp_Activity"
+            android:theme="@style/AppTheme.Dark"
+             >
+        </activity>
+        <activity
+        android:name=".Class_Schedule" />
+        <activity
+            android:windowSoftInputMode="adjustPan"
+
+            android:name=".Profile" />
+        <activity android:name=".Broadcast"/>
+        <receiver
+            android:name="com.pushbots.google.gcm.GCMBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <!-- Receives the actual messages. -->
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <!-- Receives the registration id. -->
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+                <category android:name="com.sanlok.app" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.pushbots.push.DefaultPushHandler" />
+        <receiver android:name=".NotificationPublisher" />
+        <service android:name="com.pushbots.push.GCMIntentService" />
+        <service android:name=".MyAlarmService"
+            android:enabled="true" />
+
+        <receiver android:name=".MyReceiver"/>
+    </application>
+
+
+</manifest>
